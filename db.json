@@ -1,0 +1,117 @@
+{
+  "transactions": [
+    {
+      "id": "2",
+      "amount": -200,
+      "category": "Food",
+      "date": "2026-03-02",
+      "description": "Lunch"
+    },
+    {
+      "id": "3",
+      "amount": -150,
+      "category": "Transport",
+      "date": "2026-03-02",
+      "description": "Bus fare"
+    },
+    {
+      "id": "4",
+      "amount": -800,
+      "category": "Shopping",
+      "date": "2026-03-03",
+      "description": "Clothes"
+    },
+    {
+      "id": "5",
+      "amount": 2000,
+      "category": "Freelance",
+      "date": "2026-03-05",
+      "description": "Project payment"
+    },
+    {
+      "id": "6",
+      "amount": -300,
+      "category": "Food",
+      "date": "2026-03-06",
+      "description": "Dinner"
+    },
+    {
+      "id": "7",
+      "amount": -1200,
+      "category": "Rent",
+      "date": "2026-03-07",
+      "description": "Monthly rent"
+    },
+    {
+      "id": "a99f",
+      "amount": 12,
+      "category": "Food",
+      "date": "2026-03-19",
+      "description": "vadapav"
+    },
+    {
+      "id": "dde0",
+      "amount": 23,
+      "category": "Food",
+      "date": "2026-03-19",
+      "description": "vadapav"
+    },
+    {
+      "id": "bbb5",
+      "amount": -100,
+      "category": "asas",
+      "date": "2026-03-20",
+      "description": ""
+    },
+    {
+      "id": "438d",
+      "amount": 4000,
+      "category": "Salary",
+      "date": "2026-03-19",
+      "description": ""
+    },
+    {
+      "id": "769a",
+      "amount": 232323,
+      "category": "asdas",
+      "date": "2026-03-20",
+      "description": "asdas"
+    },
+    {
+      "id": "99ce",
+      "amount": -23121,
+      "category": "adsd",
+      "date": "2026-03-20",
+      "description": ""
+    },
+    {
+      "id": "bd46",
+      "amount": -123,
+      "category": "food",
+      "date": "2026-03-19",
+      "description": "dd"
+    },
+    {
+      "id": "3a0e",
+      "amount": 23223,
+      "category": "salary",
+      "date": "2026-03-20",
+      "description": "ds"
+    },
+    {
+      "id": "7a1b",
+      "amount": -1231,
+      "category": "Food",
+      "date": "2026-03-20",
+      "description": "ssa"
+    },
+    {
+      "id": "b298",
+      "amount": -2323,
+      "category": "Food",
+      "date": "2026-03-20",
+      "description": ""
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
