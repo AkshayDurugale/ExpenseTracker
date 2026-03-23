@@ -8,13 +8,6 @@
       "description": "Monthly rent"
     },
     {
-      "id": "bbb5",
-      "amount": -100,
-      "category": "asas",
-      "date": "2026-03-20",
-      "description": ""
-    },
-    {
       "id": "438d",
       "amount": 4000,
       "category": "Salary",
@@ -22,19 +15,18 @@
       "description": ""
     },
     {
-      "id": "bd46",
-      "amount": -123,
-      "category": "food",
-      "date": "2026-03-19",
-      "description": "dd"
-    },
-
-    {
       "id": "b298",
       "amount": -2323,
       "category": "Food",
       "date": "2026-03-20",
       "description": ""
+    },
+    {
+      "amount": -2000,
+      "category": "Gym",
+      "date": "2026-03-23",
+      "description": "",
+      "id": "eUOMvMj"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
