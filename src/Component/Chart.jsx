@@ -9,6 +9,7 @@ import {
   LineElement,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import annotationPlugin from "chartjs-plugin-annotation";
 import styles from "../Styles/Chart.module.css";
 
 Chart.register(
@@ -18,6 +19,7 @@ Chart.register(
   PointElement,
   LineElement,
   ChartDataLabels,
+  annotationPlugin,
 );
 
 const Charts = ({ transactions }) => {
@@ -169,6 +171,29 @@ const Charts = ({ transactions }) => {
                       labels: {
                         font: {
                           size: 12,
+                        },
+                      },
+                    },
+                    annotation: {
+                      annotations: {
+                        zeroLine: {
+                          type: "line",
+                          yMin: 0,
+                          yMax: 0,
+                          borderColor: "#e74c3c",
+                          borderWidth: 2,
+                          borderDash: [5, 5],
+                          label: {
+                            content: "Break-even",
+                            enabled: true,
+                            position: "end",
+                            backgroundColor: "#e74c3c",
+                            color: "white",
+                            font: {
+                              size: 10,
+                            },
+                            padding: 4,
+                          },
                         },
                       },
                     },

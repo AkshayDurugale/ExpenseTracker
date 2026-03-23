@@ -27,6 +27,20 @@
       "date": "2026-03-23",
       "description": "",
       "id": "eUOMvMj"
+    },
+    {
+      "amount": 8000,
+      "category": "Bonus",
+      "date": "2026-03-23",
+      "description": "",
+      "id": "ZqUc0zA"
+    },
+    {
+      "amount": -3000,
+      "category": "Groccery",
+      "date": "2026-03-23",
+      "description": "",
+      "id": "MPinzBO"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
