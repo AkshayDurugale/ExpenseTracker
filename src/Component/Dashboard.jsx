@@ -11,8 +11,8 @@ const Dashboard = ({ transactions }) => {
   const balance = income - expenses;
 
   return (
-    <div className={`${styles.dashboard} card`}>
-      <h2>Overview</h2>
+    <div className={styles.dashboard}>
+      <h4>Overview</h4>
       <div className={styles.row}>
         <div className={styles.item}>
           <div className={styles.label}>Income</div>

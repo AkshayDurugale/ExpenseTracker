@@ -1,3 +1,7 @@
+.container {
+  padding: 20px;
+}
+
 .header {
   width: 100%;
   text-align: center;
@@ -11,5 +15,114 @@
 .header h1 {
   font-size: 1.8rem;
   letter-spacing: 0.02em;
-  margin: 0;
+  margin: 0 0 15px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.navLinks {
+  display: flex;
+  gap: 0;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: auto;
+}
+
+.hamburgerLine {
+  width: 30px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .header {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .nav {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navLinks {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: black;
+    flex-direction: column;
+    padding: 1rem 0;
+    border-radius: 0 0 10px 10px;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .navOpen {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navLink {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .navLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }

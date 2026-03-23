@@ -1,13 +1,11 @@
 .charts {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .graphs {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
+  width: 100%;
 }
 
 @media (min-width: 850px) {
@@ -22,10 +20,56 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
 }
 
 .chartCard h3 {
   margin: 0 0 12px 0;
   font-size: 1.1rem;
   color: var(--text);
+  text-align: center;
+}
+
+.chartCard > * {
+  flex: 1;
+  min-height: 200px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 849px) {
+  .graphs {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .chartCard {
+    padding: 12px;
+    min-height: 240px;
+  }
+
+  .chartCard h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .chartCard > * {
+    min-height: 170px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartCard {
+    padding: 10px;
+    min-height: 200px;
+  }
+
+  .chartCard h3 {
+    font-size: 0.95rem;
+  }
+
+  .chartCard > * {
+    min-height: 140px;
+  }
 }
