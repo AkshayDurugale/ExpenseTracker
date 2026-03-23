@@ -11,6 +11,7 @@ const TransactionFormPage = ({ transactions, add, update, remove }) => {
       <Header />
       <main className="main">
         <section className="section">
+          <Dashboard transactions={transactions} />
           <h2>Add/Edit Transaction</h2>
           <TransactionForm
             addTransaction={add}
@@ -18,7 +19,6 @@ const TransactionFormPage = ({ transactions, add, update, remove }) => {
             editing={editing}
             setEditing={setEditing}
           />
-          <Dashboard transactions={transactions} />
         </section>
       </main>
     </div>
