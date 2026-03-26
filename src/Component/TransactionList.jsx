@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "../Styles/TransactionList.module.css";
 
-const TransactionList = ({ transactions, removeTransaction, setEditing }) => {
+const TransactionList = ({ transactions, remove, setEditing, onEdit }) => {
   const handleDelete = (tx) => {
     if (
       window.confirm(
         `Are you sure you want to delete this transaction?\n${tx.category}: $${tx.amount.toFixed(2)}`,
       )
     ) {
-      removeTransaction(tx.id);
+      remove(tx.id);
     }
   };
 
@@ -42,7 +42,7 @@ const TransactionList = ({ transactions, removeTransaction, setEditing }) => {
                 </div>
                 <div className={styles.actions}>
                   <span className={styles.amount}>${tx.amount.toFixed(2)}</span>
-                  <button onClick={() => setEditing(tx)} className="secondary">
+                  <button onClick={() => onEdit(tx)} className="secondary">
                     Edit
                   </button>
                   <button onClick={() => handleDelete(tx)} className="danger">

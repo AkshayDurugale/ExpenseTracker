@@ -1,11 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import TransactionList from "../Component/TransactionList";
 import Header from "../Component/Header";
 import * as XLSX from "xlsx";
 import { jsPDF } from "jspdf";
 import styles from "../Styles/TransactionList.module.css";
 
-const TransactionListPage = ({ transactions, update, remove }) => {
+const TransactionListPage = ({ transactions, setEditing, remove }) => {
+  const navigate = useNavigate();
+
+  const handleEditClick = (transaction) => {
+    setEditing(transaction);
+    navigate("/");
+  };
   const exportToExcel = () => {
     if (!transactions.length) return;
     const data = transactions.map((t) => ({
@@ -92,7 +99,9 @@ const TransactionListPage = ({ transactions, update, remove }) => {
           <h2>All Transactions</h2>
           <TransactionList
             transactions={transactions}
-            removeTransaction={remove}
+            remove={remove}
+            setEditing={setEditing}
+            onEdit={handleEditClick}
           />
         </section>
       </main>

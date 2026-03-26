@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import TransactionForm from "../Component/TransactionForm";
 import Dashboard from "../Component/Dashboard";
 import Header from "../Component/Header";
 
-const TransactionFormPage = ({ transactions, add, update, remove }) => {
-  const [editing, setEditing] = useState(null);
-
+const TransactionFormPage = ({
+  add,
+  update,
+  editing,
+  setEditing,
+  transactions,
+}) => {
   return (
     <div className="App">
       <Header />
