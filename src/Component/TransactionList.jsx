@@ -15,7 +15,7 @@ const TransactionList = ({ transactions, remove, setEditing, onEdit }) => {
   return (
     <div className={`${styles.list} card`}>
       <div className={styles.header}>
-        <h2>Transactions</h2>
+        <h4>Transactions</h4>
         <span className={styles.count}>{transactions.length} records</span>
       </div>
 
@@ -42,10 +42,13 @@ const TransactionList = ({ transactions, remove, setEditing, onEdit }) => {
                 </div>
                 <div className={styles.actions}>
                   <span className={styles.amount}>${tx.amount.toFixed(2)}</span>
-                  <button onClick={() => onEdit(tx)} className="secondary">
+                  <button onClick={() => onEdit(tx)} className={styles.primary}>
                     Edit
                   </button>
-                  <button onClick={() => handleDelete(tx)} className="danger">
+                  <button
+                    onClick={() => handleDelete(tx)}
+                    className={styles.danger}
+                  >
                     Delete
                   </button>
                 </div>

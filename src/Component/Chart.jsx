@@ -81,7 +81,7 @@ const Charts = ({ transactions }) => {
         {expenseTransactions.length > 0 && (
           <div className={styles.chartCard}>
             <h3>Spending by Category</h3>
-            <div style={{ height: "300px", width: "100%" }}>
+            <div>
               <Pie
                 data={{
                   labels: categories,
@@ -161,7 +161,7 @@ const Charts = ({ transactions }) => {
         {transactions.length > 0 && (
           <div className={styles.chartCard}>
             <h3>Transaction Calendar</h3>
-            <div style={{ height: "300px", width: "100%", overflow: "auto" }}>
+            <div>
               <Calendar
                 onChange={setSelectedDate}
                 value={selectedDate}
@@ -175,15 +175,14 @@ const Charts = ({ transactions }) => {
                       return (
                         <div
                           style={{
-                            fontSize: "8px",
+                            fontSize: "6px",
                             textAlign: "center",
-                            marginTop: "2px",
+                            marginTop: "1px",
                             color: netAmount >= 0 ? "#27ae60" : "#e74c3c",
                           }}
                         >
                           ${Math.abs(netAmount).toFixed(0)}
-                          <br />
-                          <span style={{ fontSize: "8px" }}>
+                          <span style={{ fontSize: "6px" }}>
                             ({dayTransactions.length} tx)
                           </span>
                         </div>
@@ -205,8 +204,8 @@ const Charts = ({ transactions }) => {
             </div>
             {selectedDate &&
               transactionsByDate[selectedDate.toDateString()] && (
-                <div style={{ marginTop: "10px", fontSize: "12px" }}>
-                  <h4>Transactions on {selectedDate.toDateString()}:</h4>
+                <div>
+                  <h6>Transactions on {selectedDate.toDateString()}:</h6>
                   <ul style={{ listStyle: "none", padding: 0 }}>
                     {transactionsByDate[selectedDate.toDateString()].map(
                       (tx, index) => (
@@ -214,11 +213,12 @@ const Charts = ({ transactions }) => {
                           key={index}
                           style={{
                             margin: "1px 0",
-                            color: tx.amount >= 0 ? "#27ae60" : "#e74c3c",
+                            color: tx.amount >= 0 ? "#27ae60" : "#f7220b",
                             fontSize: "11px",
+                            width: "100%",
                           }}
                         >
-                          {tx.description}: ${Math.abs(tx.amount).toFixed(2)} (
+                          {tx.description} $ {Math.abs(tx.amount).toFixed(2)} (
                           {tx.category})
                         </li>
                       ),

@@ -96,7 +96,6 @@ const TransactionListPage = ({ transactions, setEditing, remove }) => {
 
       <main className="main">
         <section className="section">
-          <h2>All Transactions</h2>
           <TransactionList
             transactions={transactions}
             remove={remove}

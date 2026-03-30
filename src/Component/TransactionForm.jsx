@@ -14,6 +14,10 @@ const TransactionForm = ({
     const today = new Date();
     return today.toISOString().split("T")[0];
   });
+  const [time, setTime] = useState(() => {
+    const now = new Date();
+    return now.toTimeString().slice(0, 5);
+  });
   const [description, setDescription] = useState("");
 
   const incomeCategories = ["Salary", "Bonus", "Others"];
@@ -140,8 +144,8 @@ const TransactionForm = ({
           Time
           <input
             type="time"
-            value={date.slice(11, 16)}
-            onChange={(e) => setDate(date.slice(0, 10) + "T" + e.target.value)}
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
             required
           />
         </label>

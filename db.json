@@ -27,6 +27,20 @@
       "date": "2026-03-26",
       "description": "",
       "id": "oV6xSag"
+    },
+    {
+      "amount": -122,
+      "category": "Gym",
+      "date": "2026-03-30",
+      "description": "",
+      "id": "n9R_9h9"
+    },
+    {
+      "amount": 12212,
+      "category": "Salary",
+      "date": "2026-03-19",
+      "description": "",
+      "id": "Cly2P-V"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
