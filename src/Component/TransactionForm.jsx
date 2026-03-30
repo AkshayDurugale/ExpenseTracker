@@ -10,7 +10,10 @@ const TransactionForm = ({
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(() => {
+    const today = new Date();
+    return today.toISOString().split("T")[0];
+  });
   const [description, setDescription] = useState("");
 
   const incomeCategories = ["Salary", "Bonus", "Others"];
@@ -67,7 +70,10 @@ const TransactionForm = ({
     setAmount("");
     setType("expense");
     setCategory("");
-    setDate("");
+    setDate(() => {
+      const today = new Date();
+      return today.toISOString().split("T")[0];
+    });
     setDescription("");
   };
 
@@ -75,7 +81,10 @@ const TransactionForm = ({
     setEditing(null);
     setAmount("");
     setCategory("");
-    setDate("");
+    setDate(() => {
+      const today = new Date();
+      return today.toISOString().split("T")[0];
+    });
     setDescription("");
   };
 
@@ -124,6 +133,15 @@ const TransactionForm = ({
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Time
+          <input
+            type="time"
+            value={date.slice(11, 16)}
+            onChange={(e) => setDate(date.slice(0, 10) + "T" + e.target.value)}
             required
           />
         </label>

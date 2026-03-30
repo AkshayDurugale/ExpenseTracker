@@ -1,5 +1,5 @@
-import React from "react";
-import { Pie, Line } from "react-chartjs-2";
+import React, { useState } from "react";
+import { Pie } from "react-chartjs-2";
 import {
   Chart,
   ArcElement,
@@ -10,6 +10,8 @@ import {
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import annotationPlugin from "chartjs-plugin-annotation";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import styles from "../Styles/Chart.module.css";
 
 Chart.register(
@@ -23,6 +25,8 @@ Chart.register(
 );
 
 const Charts = ({ transactions }) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   if (!transactions.length) {
     return (
       <div className={styles.charts}>
@@ -41,13 +45,22 @@ const Charts = ({ transactions }) => {
       .reduce((sum, tx) => sum + Math.abs(tx.amount), 0),
   );
 
-  const dailyTotals = transactions.reduce((acc, tx) => {
-    const day = new Date(tx.date).toLocaleDateString();
-    acc[day] = (acc[day] || 0) + tx.amount;
+  // Group transactions by date for calendar display
+  const transactionsByDate = transactions.reduce((acc, tx) => {
+    const dateKey = new Date(tx.date).toDateString();
+    if (!acc[dateKey]) {
+      acc[dateKey] = [];
+    }
+    acc[dateKey].push(tx);
     return acc;
   }, {});
-  const lineLabels = Object.keys(dailyTotals);
-  const lineData = Object.values(dailyTotals);
+
+  // Calculate daily net amounts for calendar tiles
+  const dailyNetAmounts = transactions.reduce((acc, tx) => {
+    const dateKey = new Date(tx.date).toDateString();
+    acc[dateKey] = (acc[dateKey] || 0) + tx.amount;
+    return acc;
+  }, {});
 
   if (!transactions.length) {
     return (
@@ -147,76 +160,72 @@ const Charts = ({ transactions }) => {
 
         {transactions.length > 0 && (
           <div className={styles.chartCard}>
-            <h3>Daily Balance</h3>
-            <div style={{ height: "300px", width: "100%" }}>
-              <Line
-                data={{
-                  labels: lineLabels,
-                  datasets: [
-                    {
-                      label: "Daily Amount",
-                      data: lineData,
-                      borderColor: "#27ae60",
-                      fill: false,
-                    },
-                  ],
+            <h3>Transaction Calendar</h3>
+            <div style={{ height: "300px", width: "100%", overflow: "auto" }}>
+              <Calendar
+                onChange={setSelectedDate}
+                value={selectedDate}
+                tileContent={({ date, view }) => {
+                  if (view === "month") {
+                    const dateKey = date.toDateString();
+                    const netAmount = dailyNetAmounts[dateKey];
+                    const dayTransactions = transactionsByDate[dateKey];
+
+                    if (dayTransactions && dayTransactions.length > 0) {
+                      return (
+                        <div
+                          style={{
+                            fontSize: "8px",
+                            textAlign: "center",
+                            marginTop: "2px",
+                            color: netAmount >= 0 ? "#27ae60" : "#e74c3c",
+                          }}
+                        >
+                          ${Math.abs(netAmount).toFixed(0)}
+                          <br />
+                          <span style={{ fontSize: "8px" }}>
+                            ({dayTransactions.length} tx)
+                          </span>
+                        </div>
+                      );
+                    }
+                  }
+                  return null;
                 }}
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: {
-                      display: true,
-                      position: "top",
-                      labels: {
-                        font: {
-                          size: 12,
-                        },
-                      },
-                    },
-                    annotation: {
-                      annotations: {
-                        zeroLine: {
-                          type: "line",
-                          yMin: 0,
-                          yMax: 0,
-                          borderColor: "#e74c3c",
-                          borderWidth: 2,
-                          borderDash: [5, 5],
-                          label: {
-                            content: "Break-even",
-                            enabled: true,
-                            position: "end",
-                            backgroundColor: "#e74c3c",
-                            color: "white",
-                            font: {
-                              size: 10,
-                            },
-                            padding: 4,
-                          },
-                        },
-                      },
-                    },
-                  },
-                  scales: {
-                    x: {
-                      ticks: {
-                        font: {
-                          size: 10,
-                        },
-                      },
-                    },
-                    y: {
-                      ticks: {
-                        font: {
-                          size: 10,
-                        },
-                      },
-                    },
-                  },
+                tileClassName={({ date, view }) => {
+                  if (view === "month") {
+                    const dateKey = date.toDateString();
+                    if (transactionsByDate[dateKey]) {
+                      return "has-transactions";
+                    }
+                  }
+                  return null;
                 }}
               />
             </div>
+            {selectedDate &&
+              transactionsByDate[selectedDate.toDateString()] && (
+                <div style={{ marginTop: "10px", fontSize: "12px" }}>
+                  <h4>Transactions on {selectedDate.toDateString()}:</h4>
+                  <ul style={{ listStyle: "none", padding: 0 }}>
+                    {transactionsByDate[selectedDate.toDateString()].map(
+                      (tx, index) => (
+                        <li
+                          key={index}
+                          style={{
+                            margin: "1px 0",
+                            color: tx.amount >= 0 ? "#27ae60" : "#e74c3c",
+                            fontSize: "11px",
+                          }}
+                        >
+                          {tx.description}: ${Math.abs(tx.amount).toFixed(2)} (
+                          {tx.category})
+                        </li>
+                      ),
+                    )}
+                  </ul>
+                </div>
+              )}
           </div>
         )}
       </div>

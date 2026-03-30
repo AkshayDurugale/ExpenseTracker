@@ -1,25 +1,32 @@
 {
   "transactions": [
     {
-      "amount": 8000,
-      "category": "Bonus",
-      "date": "2026-03-23",
-      "description": "",
-      "id": "ZqUc0zA"
-    },
-    {
-      "amount": -3000,
-      "category": "Groccery",
-      "date": "2026-03-23",
-      "description": "",
-      "id": "MPinzBO"
-    },
-    {
       "amount": -2323,
       "category": "Gym",
       "date": "2026-03-24",
       "description": "",
       "id": "ZGnoaJx"
+    },
+    {
+      "amount": 40000,
+      "category": "Salary",
+      "date": "2026-03-27",
+      "description": "",
+      "id": "OM8TgLk"
+    },
+    {
+      "amount": -350,
+      "category": "Recharge/Bills",
+      "date": "2026-03-27",
+      "description": "",
+      "id": "-VLin9M"
+    },
+    {
+      "amount": -23123,
+      "category": "Groccery",
+      "date": "2026-03-26",
+      "description": "",
+      "id": "oV6xSag"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
